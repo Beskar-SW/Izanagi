@@ -16,7 +16,7 @@ export default function Admin() {
 
         fetch(`http://localhost:5000/Admin/${usuario}/${contraseña}`).then(res => res.json())
         .then(data => {
-           if(data.length == 0){
+           if(data.length === 0){
                 alert("Datos no validos")
            }else{
                setLogeado(true)
@@ -56,8 +56,8 @@ export default function Admin() {
         <>
             <Header/>
             <div id="navbar" style={{display:"flex",justifyContent:"space-around"}}>
-                <Link to={"/admin/menu/menUpdate"} className="link">Menu Panel</Link>
-                <Link to={"/admin/ventas"} className="link">Ventas</Link>
+                <Link to={"/admin/menu"} className="link">Menu Panel</Link>
+                <Link to={"/admin/menu"} className="link">Ventas</Link>
                 <Link to={"/admin/pedidos"} className="link">Pedidos</Link>
             </div>
             <section>
@@ -67,7 +67,6 @@ export default function Admin() {
                 <div>
                     <h1>Ventas rápidas</h1>
                     <QuickOrders/>
-
                 </div>
                 <div>
                     <h1>Ventas Generadas</h1>

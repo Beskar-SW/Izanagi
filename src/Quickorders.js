@@ -4,7 +4,7 @@ import './App.css'
 export default function QuickOrders(){
     const [orders, setOrders] = React.useState([]);
     const [precios, setPrecios] = React.useState([]);
-    const [pruena, setPruena] = React.useState({});
+    const [prueba, setPrueba] = React.useState({});
 
     const handleClick = () => {
         var div = document.getElementById("Orders");
@@ -58,7 +58,7 @@ export default function QuickOrders(){
         var json = {}
         json.orders = temp;
         json.precios = temp2;
-        setPruena(json);
+        setPrueba(json);
 
         setOrders(temp);
         setPrecios(temp2);

@@ -18,8 +18,6 @@ root.render(
       <Route path='/acercade' element={<Acercade/>}/>
       <Route path='/admin' element={<Admin/>}>
         <Route path='/admin/menu' element={<MenuUpdate/>}/>
-        <Route path='/admin/ventas' element={<Admin/>}/>
-        <Route path='/admin/pedidos' element={<Admin/>}/>
       </Route>
     </Routes>
   </BrowserRouter>
