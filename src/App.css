@@ -1,38 +1,357 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #f5f5f5ec;
+}
+.header {
+  background-color: #80ff7d;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 0.8em;
+}
+#navbar {
+  overflow: hidden;
+  background-color: #ffdb95;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Navbar links */
+#navbar .link {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+/* Page content */
+.descripcion {
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  padding: 10px;
+  font-weight: 700, bolder;
+  font-size: 1.8em;
+}
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+#grid {
+  display: grid;
+
+  justify-content: center;
+  grid-gap: 80px;
+  margin-top: 20px;
+}
+#grid > div {
+  display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 690px;
+  height: 180px;
+  border-radius: 10px;
+}
+
+img {
+  width: 296px;
+  float: left;
+  height: 180px;
+  border-radius: 5px;
+}
+ul li {
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+}
+ul li p {
+  padding: 9px;
+}
+ul li h3 {
+  padding: 15px;
+  font-size: 1.4em;
+  font-weight: 900;
+}
+
+footer {
+  position: relative;
+  background-color: #ffdb95;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 0.8em;
+  margin-top: 20px;
+}
+footer a {
+  margin: 5em;
+}
+
+.btnlink {
+  color: black;
+}
+.btnlink:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    width: 100vmin;
+  }
+  #grid {
+    display: grid;
+
+    justify-content: center;
+    grid-gap: 20px;
+    margin-top: 20px;
+  }
+  #grid > div {
+    display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 90%;
+    height: 180px;
+    border-radius: 10px;
+    margin: 20px;
+  }
+  img {
+    width: 160px;
+  }
+  ul li h3 {
+    padding: 4px;
+    font-size: 1.4em;
+    font-weight: 900;
+  }
+  ul li p {
+    font-size: 0.8em;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*Acerca de*/
+
+.contenedor {
+  display: absolute;
+}
+#AcercaDe {
+  display: absolute;
+  width: 100%;
+  height: 81vh;
+}
+.grid-AD {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 2em;
+}
+
+.grid-AD div {
+  text-align: justify;
+  width: 600px;
+  height: 180px;
+  border-radius: 10px;
+}
+.areaAD {
+  grid-column: 2/4;
+}
+.areaBD {
+  grid-column: 4/5;
+}
+.contaco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  flex-direction: column;
+  margin-top: 5px;
+}
+.contaco p {
+  padding: 20px;
+}
+
+.facebook-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 900;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: inset 0 0 0 0 black;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+}
+.facebook-link:hover {
+  transform: scale(1.1);
+  color: black;
+  box-shadow: inset 100px 0 0 0 black;
+  color: white;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  .grid-AD {
+    margin-left: 0;
+    grid-template-rows: repeat(6, 2fr);
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+  .grid-AD div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 80px;
+    border-radius: 10px;
+  }
+
+  .grid-AD div img {
+    width: 80%;
+  }
+
+  .areaAD {
+    grid-row: 2/3;
+    grid-column: 2/4;
+  }
+  .areaBD {
+    grid-row: 5/6;
+    grid-column: 2/4;
+  }
+  .contaco {
+    display: relative;
+  }
+  footer a {
+    margin: 2em;
+  }
+}
+
+/*Dudas*/
+
+#Dudas {
+  height: 79vh;
+}
+
+.div-form {
+  display: flex;
+  justify-content: center;
+}
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+label {
+  font-size: 1.2em;
+  margin-top: 10px;
+  font-family: sans-serif;
+}
+input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-top: 10px;
+  font-size: 1em;
+  font-family: sans-serif;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-top: 10px;
+  font-size: 1em;
+  font-family: sans-serif;
+}
+.enviar {
+  margin-left: 12px;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-top: 10px;
+  font-size: 1em;
+  font-family: sans-serif;
+  background-color: #00d2eb;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: inset 0 0 0 0 black;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.enviar:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: black;
+  box-shadow: inset 250px 0 0 0 black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* JohanPart */
+
+div#Orders{
+  background-color: aquamarine;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+div.Order{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.Order input{
+  width: 40%;
+  margin-bottom: 10px;
+  border: 5px solid purple;
+  background-color: #00d2eb;
+  color: black;
+}
+
+/* Fin JohanPart */
+
+@media screen and (max-width: 600px) {
+  body {
+    min-height: 100vh;
+    margin: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
   }
-  to {
-    transform: rotate(360deg);
+  footer {
+    min-height: 50px;
+  }
+  footer a {
+    text-decoration: none;
   }
 }
