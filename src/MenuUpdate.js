@@ -87,7 +87,19 @@ export default function MenuUpdate() {
                     <p>{entrada.descripcion}</p>
                   </li>
                   <li>
-                    <Link to={`/admin/menu/${entrada.idProducto}`} className="btn btn-primary btn-sm">Update</Link>
+                    <div style={{ display: "flex", alignItems: "center", flexDirection: "row", alignContent: "center" ,justifyContent:"center"}}>
+                      <Link to={`/admin/menu/${entrada.idProducto}`} className="btn btn-primary btn-sm">Update</Link>
+                      {/* <Link to={`/admin/menu/delete/${entrada.idProducto}`} className="btn btn-danger btn-sm">Delete</Link> */}
+                      <button className="btn btn-danger btn-sm" onClick={() => {
+                        if (window.confirm("Estas seguro de eliminar este producto?")) {
+                          fetch(`http://localhost:5000/Admin/delete/${entrada.idProducto}`, {
+                            method: "DELETE",
+                          }).then(() => {
+                            window.location.reload();
+                          });
+                        }
+                      }}>Delete</button>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -115,7 +127,19 @@ export default function MenuUpdate() {
                     <p>{empanizado.descripcion}</p>
                   </li>
                   <li>
-                    <Link to={`/admin/menu/${empanizado.idProducto}`}></Link>
+                    <div style={{ display: "flex", alignItems: "center", flexDirection: "row", alignContent: "center" ,justifyContent:"center"}}>
+                      <Link to={`/admin/menu/${empanizado.idProducto}`} className="btn btn-primary btn-sm">Update</Link>
+                      {/* <Link to={`/admin/menu/delete/${entrada.idProducto}`} className="btn btn-danger btn-sm">Delete</Link> */}
+                      <button className="btn btn-danger btn-sm" onClick={() => {
+                        if (window.confirm("Estas seguro de eliminar este producto?")) {
+                          fetch(`http://localhost:5000/Admin/delete/${empanizado.idProducto}`, {
+                            method: "DELETE",
+                          }).then(() => {
+                            window.location.reload();
+                          });
+                        }
+                      }}>Delete</button>
+                    </div>
                   </li>
                 </ul>
               </div>
