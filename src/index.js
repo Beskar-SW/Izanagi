@@ -7,6 +7,7 @@ import Acercade from './Acercade';
 import Admin from './Admin';
 import reportWebVitals from './reportWebVitals';
 import MenuUpdate from './MenuUpdate';
+import UpdateElement from './Update/UpdateElement';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,9 +17,9 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path='/dudas' element={<Dudas/>}/>
       <Route path='/acercade' element={<Acercade/>}/>
-      <Route path='/admin' element={<Admin/>}>
-        <Route path='/admin/menu' element={<MenuUpdate/>}/>
-      </Route>
+      <Route path='/admin' element={<Admin/>}/>
+      <Route path='/admin/menu' element={<MenuUpdate/>}/>
+      <Route path='/admin/menu/:id' element={<UpdateElement/>}/>
     </Routes>
   </BrowserRouter>
 

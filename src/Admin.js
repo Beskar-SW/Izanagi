@@ -57,7 +57,7 @@ export default function Admin() {
             <Header/>
             <div id="navbar" style={{display:"flex",justifyContent:"space-around"}}>
                 <Link to={"/admin/menu"} className="link">Menu Panel</Link>
-                <Link to={"/admin/menu"} className="link">Ventas</Link>
+                <Link to={"/admin/ventas"} className="link">Ventas</Link>
                 <Link to={"/admin/pedidos"} className="link">Pedidos</Link>
             </div>
             <section>
