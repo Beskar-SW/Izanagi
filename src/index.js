@@ -8,6 +8,7 @@ import Admin from './Admin';
 import reportWebVitals from './reportWebVitals';
 import MenuUpdate from './MenuUpdate';
 import UpdateElement from './Update/UpdateElement';
+import CreateElement from './Update/CreateElement';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,6 +21,7 @@ root.render(
       <Route path='/admin' element={<Admin/>}/>
       <Route path='/admin/menu' element={<MenuUpdate/>}/>
       <Route path='/admin/menu/:id' element={<UpdateElement/>}/>
+      <Route path='/admin/create' element={<CreateElement/>} />
     </Routes>
   </BrowserRouter>
 

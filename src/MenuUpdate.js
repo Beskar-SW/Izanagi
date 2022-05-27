@@ -65,6 +65,11 @@ export default function MenuUpdate() {
       >
         <h1>Menu</h1>
       </div>
+
+      <div style={{display:"flex",flexDirection:"row",justifyContent: "center", alignItems: "center"}}>
+        <Link to="/admin/create" className="btn btn-dark btn-lg btn-block">Crear Producto</Link>
+      </div>
+
       <div id="grid">
         {entradas === null ? (
           <h1>Cargando...</h1>

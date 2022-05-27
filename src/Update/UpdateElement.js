@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link} from "react-router-dom";
+import Header from "../Header";
+import "../App.css";
 
 export default function UpdateElement() {
 
@@ -55,6 +57,22 @@ export default function UpdateElement() {
     };
 
     return (
+        <>
+        <Header />
+      <div
+        id="navbar"
+        style={{ display: "flex", justifyContent: "space-around" }}
+      >
+        <Link to={"/admin/menu"} className="link">
+          Menu Panel
+        </Link>
+        <Link to={"/admin/ventas"} className="link">
+          Ventas
+        </Link>
+        <Link to={"/admin/pedidos"} className="link">
+          Pedidos
+        </Link>
+      </div>
         <div className="container">
             <div className="row">
                 <div className="col-md-6 offset-md-3">
@@ -107,5 +125,6 @@ export default function UpdateElement() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
