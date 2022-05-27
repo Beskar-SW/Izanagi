@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
-import Navbar from "./Navbar";
 import "./App.css";
 
 export default function MenuUpdate() {

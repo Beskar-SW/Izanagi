@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function UpdateElement() {
-  const urlStatics = "http://localhost:5000/static/";
+
+    const urlStatic = "http://localhost:5000/static/";
   const { id } = useParams();
   const [producto, setProducto] = useState("");
   const [precio, setPrecio] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const [rutaFoto, setRutaFoto] = useState("");
+  const [rutaFoto, setRutaFoto] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:5000/productos/${id}`)
@@ -16,9 +17,40 @@ export default function UpdateElement() {
         setProducto(data[0].producto);
         setPrecio(data[0].precio);
         setDescripcion(data[0].descripcion);
-        setRutaFoto(data[0].rutaFoto);
       });
-  }, []);
+  }, [id]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // const formData = new FormData();
+        // formData.append("producto", producto);
+        // formData.append("precio", precio);
+        // formData.append("descripcion", descripcion);
+        // formData.append("rutaFoto", rutaFoto);
+        // console.log(formData);
+        // fetch(`http://localhost:5000/Admin/update/${id}`, {
+        //     method: "PUT",
+        //     body: formData,
+        // });
+        
+        fetch(`http://localhost:5000/Admin/update/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                producto,
+                precio,
+                descripcion,
+                rutaFoto,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
+    };
+
 
   //from with bootstrap styles
 
@@ -27,7 +59,7 @@ export default function UpdateElement() {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h1>Editar Producto</h1>
-          <form>
+          <form encType="multipart/form-data">
             <div className="form-group">
               <label>Producto</label>
               <input
@@ -59,29 +91,19 @@ export default function UpdateElement() {
               <label>Ruta de la foto</label>
               <input
                 type="file"
+                alt=""
+                id="Foto"
                 className="form-control"
-                onChange={(e) => setRutaFoto(e.target.value)}
+                accept="image/*"
+                src={urlStatic + rutaFoto}
+                name="rutaFoto"
+                onChange={(e) => setRutaFoto(e.target.files[0])}
               />
             </div>
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={(e) => {
-                // fetch(`http://localhost:5000/productos/${id}`, {
-                //   method: "PUT",
-                //   headers: {
-                //     "Content-Type": "application/json",
-                //   },
-                //   body: JSON.stringify({
-                //     producto,
-                //     precio,
-                //     descripcion,
-                //     rutaFoto,
-                //   }),
-                // });
-                e.preventDefault();
-                console.log(producto, precio, descripcion, rutaFoto);
-            }}
+              onClick={handleSubmit}
             >Actualizar</button>
           </form>
         </div>
