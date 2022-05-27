@@ -19,7 +19,7 @@ export default function CreateElement() {
         reader.readAsDataURL(rutaFoto);
         reader.onload = function () {
             var base64 = reader.result;
-            fetch(`http://localhost:5000/Admin/create`, {
+            fetch(`https://backizanagi.herokuapp.com/Admin/create`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -21,7 +21,7 @@ export default function Acercade() {
             </p>
           </div>
           <div id="areaBD" class="areaBD">
-            <img src="http://localhost:5000/static/Izanagilogo.png" alt=""/>
+            <img src="https://backizanagi.herokuapp.com/static/Izanagilogo.png" alt=""/>
           </div>
         </div>
         <div class="contaco">

@@ -12,7 +12,7 @@ export default function UpdateElement() {
     const [rutaFoto, setRutaFoto] = useState(new File([], ""));
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productos/${id}`)
+        fetch(`https://backizanagi.herokuapp.com/productos/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setProducto(data[0].producto);
@@ -29,7 +29,7 @@ export default function UpdateElement() {
         reader.readAsDataURL(rutaFoto);
         reader.onload = function () {
             var base64 = reader.result;
-            fetch(`http://localhost:5000/Admin/update/${id}`, {
+            fetch(`https://backizanagi.herokuapp.com/Admin/update/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

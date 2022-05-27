@@ -14,7 +14,7 @@ export default function Admin() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/Admin/${usuario}/${contraseña}`).then(res => res.json())
+        fetch(`https://backizanagi.herokuapp.com/Admin/${usuario}/${contraseña}`).then(res => res.json())
         .then(data => {
            if(data.length === 0){
                 alert("Datos no validos")

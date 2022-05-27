@@ -4,19 +4,19 @@ import Header from "./Header";
 import "./App.css";
 
 export default function MenuUpdate() {
-  const urlStatics = "http://localhost:5000/static/";
+  const urlStatics = "https://backizanagi.herokuapp.com/static/";
 
   const [entradas, setEntradas] = useState([]);
   const [empanizados, setEmpanizados] = useState([]);
 
   async function getEntradas() {
-    const response = await fetch("http://localhost:5000/Menu/1");
+    const response = await fetch("https://backizanagi.herokuapp.com/Menu/1");
     const data = await response.json();
     return data;
   }
 
   async function getEmpanizados() {
-    const response = await fetch("http://localhost:5000/Menu/2");
+    const response = await fetch("https://backizanagi.herokuapp.com/Menu/2");
     const data = await response.json();
     return data;
   }
@@ -97,7 +97,7 @@ export default function MenuUpdate() {
                       {/* <Link to={`/admin/menu/delete/${entrada.idProducto}`} className="btn btn-danger btn-sm">Delete</Link> */}
                       <button className="btn btn-danger btn-sm" onClick={() => {
                         if (window.confirm("Estas seguro de eliminar este producto?")) {
-                          fetch(`http://localhost:5000/Admin/delete/${entrada.idProducto}`, {
+                          fetch(`https://backizanagi.herokuapp.com/Admin/delete/${entrada.idProducto}`, {
                             method: "DELETE",
                           }).then(() => {
                             window.location.reload();
@@ -137,7 +137,7 @@ export default function MenuUpdate() {
                       {/* <Link to={`/admin/menu/delete/${entrada.idProducto}`} className="btn btn-danger btn-sm">Delete</Link> */}
                       <button className="btn btn-danger btn-sm" onClick={() => {
                         if (window.confirm("Estas seguro de eliminar este producto?")) {
-                          fetch(`http://localhost:5000/Admin/delete/${empanizado.idProducto}`, {
+                          fetch(`https://backizanagi.herokuapp.com/Admin/delete/${empanizado.idProducto}`, {
                             method: "DELETE",
                           }).then(() => {
                             window.location.reload();
