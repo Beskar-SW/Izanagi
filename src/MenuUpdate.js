@@ -4,19 +4,19 @@ import Header from "./Header";
 import "./App.css";
 
 export default function MenuUpdate() {
-  const urlStatics = "https://backizanagi.herokuapp.com/static/";
+  const urlStatics = "http://177.229.55.231:8080/static/";
 
   const [entradas, setEntradas] = useState([]);
   const [empanizados, setEmpanizados] = useState([]);
 
   async function getEntradas() {
-    const response = await fetch("https://backizanagi.herokuapp.com/Menu/1");
+    const response = await fetch("http://177.229.55.231:8080/Menu/1");
     const data = await response.json();
     return data;
   }
 
   async function getEmpanizados() {
-    const response = await fetch("https://backizanagi.herokuapp.com/Menu/2");
+    const response = await fetch("http://177.229.55.231:8080/Menu/2");
     const data = await response.json();
     return data;
   }

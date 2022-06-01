@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import MenuUpdate from './MenuUpdate';
 import UpdateElement from './Update/UpdateElement';
 import CreateElement from './Update/CreateElement';
+import Ventas from './Ventas/Ventas';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,12 +23,10 @@ root.render(
       <Route path='/admin/menu' element={<MenuUpdate/>}/>
       <Route path='/admin/menu/:id' element={<UpdateElement/>}/>
       <Route path='/admin/create' element={<CreateElement/>} />
+      <Route path='/admin/ventas' element={<Ventas/>}/>
     </Routes>
   </BrowserRouter>
 
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

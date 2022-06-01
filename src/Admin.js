@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import './App.css'
-import QuickOrders from "./Quickorders";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Admin() {
@@ -14,7 +13,7 @@ export default function Admin() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`https://backizanagi.herokuapp.com/Admin/${usuario}/${contraseña}`).then(res => res.json())
+        fetch(`http://177.229.55.231:8080/Admin/${usuario}/${contraseña}`).then(res => res.json())
         .then(data => {
            if(data.length === 0){
                 alert("Datos no validos")
@@ -60,18 +59,6 @@ export default function Admin() {
                 <Link to={"/admin/ventas"} className="link">Ventas</Link>
                 <Link to={"/admin/pedidos"} className="link">Pedidos</Link>
             </div>
-            <section>
-                <div>
-                    <h1>Pedidos rápidos</h1>
-                </div>
-                <div>
-                    <h1>Ventas rápidas</h1>
-                    <QuickOrders/>
-                </div>
-                <div>
-                    <h1>Ventas Generadas</h1>
-                </div>
-            </section>
         </>
     );
 }

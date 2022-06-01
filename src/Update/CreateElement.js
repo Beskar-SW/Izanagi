@@ -8,40 +8,39 @@ export default function CreateElement() {
     const [producto, setProducto] = useState("");
     const [precio, setPrecio] = useState("");
     const [descripcion, setDescripcion] = useState("");
-    const [rutaFoto, setRutaFoto] = useState(new File([], ""));
+    const [rutaFoto, setRutaFoto] = useState("");
     const [tipo, setTipo] = useState("1");
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if(rutaFoto === ""){
+            alert("Selecciona una imagen");
+            return;
+        }        
 
-        var reader = new FileReader();
-        reader.readAsDataURL(rutaFoto);
-        reader.onload = function () {
-            var base64 = reader.result;
-            fetch(`https://backizanagi.herokuapp.com/Admin/create`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    producto,
-                    precio,
-                    descripcion,
-                    base64,
-                    "rutaFoto": rutaFoto.name,
-                    tipo
-                }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.response) {
-                        window.location.href = "/admin/menu";
-                    } else {
-                        alert("Error al enviar los datos");
-                    }
-                });
-        };
+        const formData = new FormData();
+        formData.append("producto", producto);
+        formData.append("precio", precio);
+        formData.append("descripcion", descripcion);
+        formData.append("foto", rutaFoto);
+        formData.append("tipo", tipo);
+
+        fetch(`http://177.229.55.231:8080/Admin/create`, {
+            method: "POST",
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: formData
+        }).then((res) => {
+            if (res.status === 200) {
+                alert("Producto agregado");
+                window.location.href = "/admin/menu";
+            } else {
+                alert("Error al agregar producto");
+            }
+        });
+
     };
 
     return (
@@ -114,7 +113,6 @@ export default function CreateElement() {
                                     <option value="1">Plato Fuerte</option>
                                     <option value="2">Empanizados</option>
                                 </select>
-                                {tipo}
                             </div>
                             <button
                                 type="submit"
