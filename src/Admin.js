@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import './App.css'
@@ -8,7 +8,9 @@ export default function Admin() {
 
     const [usuario,setUsuario] = useState();
     const [contraseña,setContraseña] = useState();
-    const [logeado,setLogeado] = useState(false);
+    const [logeado,setLogeado] = useState(false || localStorage.getItem('logeado'));
+    const [pedidos,setPedidos] = useState([]);
+    const [ventas,setVentas] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,11 +23,34 @@ export default function Admin() {
                //set usuario y contraseña en localStorage
                 localStorage.setItem("usuario", usuario);
                 localStorage.setItem("contraseña", contraseña);
+                localStorage.setItem("logeado", true);
                setLogeado(true)
            }
         })
         .catch(e => console.log(e))
     }
+
+    useEffect(() => {
+        fetch("http://177.229.55.231:8080/Admin/Pedidos",{
+            method: "GET",
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        }).then(res => res.json())
+        .then(data => {
+            setPedidos(data)
+        })
+
+        fetch("http://177.229.55.231:8080/Admin/Ventas",{
+            method: "GET",
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        }).then(res => res.json())
+        .then(data => {
+            setVentas(data)
+        })        
+    },[])
 
     if(!logeado){
         return(
@@ -53,6 +78,16 @@ export default function Admin() {
         )
     }
 
+    const DisplayVentas = (string) => {
+        var json = JSON.parse(string);
+        var arr = [];
+        var str = "\n";
+        for(var key in json){
+            arr = json[key];
+            str += arr.join(" ");
+        }
+        return str;
+    }
 
     return (
         <>
@@ -61,6 +96,54 @@ export default function Admin() {
                 <Link to={"/admin/menu"} className="link">Menu Panel</Link>
                 <Link to={"/admin/ventas"} className="link">Ventas</Link>
                 <Link to={"/admin/pedidos"} className="link">Pedidos</Link>
+            </div>
+            <div>
+                <h1>Pedidos</h1>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Pedido</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {pedidos.map((pedido,index) => {
+                            return(
+                                <tr key={index}>
+                                    <th scope="row">{index+1}</th>
+                                    <td>{pedido.nombreCliente}</td>
+                                    <td>{pedido.telefono}</td>
+                                    <td>{pedido.data}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>    
+            </div>
+            <div>
+                <h1>Ventas</h1>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Venta</th>
+                            <th scope="col">Fecha</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {ventas.map((venta,index) => {
+                            return(
+                                <tr key={index}>
+                                    <th scope="row">{index+1}</th>
+                                    <td>{DisplayVentas(venta.data)}</td>
+                                    <td>{new Date(venta.fecha).toUTCString()}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
             </div>
         </>
     );
