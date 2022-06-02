@@ -5,6 +5,22 @@ import "../App.css";
 
 export default function UpdateElement() {
 
+
+    const [, setLogeado] = useState(false);
+
+    window.onload = function () {
+        if (localStorage.getItem("usuario") !== null) {
+            if (localStorage.getItem("usuario") === "izanagiAdmin" && localStorage.getItem("contraseña") === "Iza753") {
+                setLogeado(true);
+            }else{
+                setLogeado(false);
+                window.location.href = "/admin";
+            }
+        } else {
+            window.location.href = "/admin";
+        }
+    }
+
     const { id } = useParams();
     const [producto, setProducto] = useState("");
     const [precio, setPrecio] = useState("");

@@ -18,6 +18,9 @@ export default function Admin() {
            if(data.length === 0){
                 alert("Datos no validos")
            }else{
+               //set usuario y contraseña en localStorage
+                localStorage.setItem("usuario", usuario);
+                localStorage.setItem("contraseña", contraseña);
                setLogeado(true)
            }
         })
