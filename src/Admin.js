@@ -83,7 +83,8 @@ export default function Admin() {
         var arr = [];
         // var str = "\n";
         for(var key in json){
-            arr = json[key];
+            arr.push(json[key]);
+            // arr = json[key];
             // str += arr.join(" ");
         }
         return arr.join("\n");
