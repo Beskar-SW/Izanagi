@@ -83,7 +83,7 @@ export default function Admin() {
         var arr = [];
         for(var key in json){
             var temp = json[key];
-            var st1 = `Producto: ${temp[0]}\nPrecio: ${temp[1]}\nCantidad: ${temp[2]}`;
+            var st1 = `Producto: ${temp[0]}\nPrecio: ${temp[1]}\nCantidad: ${temp[2]}<br></br>`;
 
             arr.push(st1);
         }
