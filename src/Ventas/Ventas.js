@@ -82,7 +82,6 @@ export default function Ventas() {
         }
         setProductos2(array);
         setPrueba(test);
-        // console.table(test);
         //multiplicar cantidad por precio y sumar del json test
         var total = 0;
         //iterar json test
