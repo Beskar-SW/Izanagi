@@ -81,11 +81,11 @@ export default function Admin() {
     const DisplayVentas = (string) => {
         var json = JSON.parse(string);
         var arr = [];
-        // var str = "\n";
         for(var key in json){
-            arr.push(json[key]);
-            // arr = json[key];
-            // str += arr.join(" ");
+            var temp = json[key];
+            var st1 = `Producto: ${temp[0]}\nPrecio: ${temp.fecha}\nCantidad: ${temp.total}`;
+
+            arr.push(st1);
         }
         return arr.join("\n");
     }
@@ -131,6 +131,7 @@ export default function Admin() {
                             <th scope="col">#</th>
                             <th scope="col">Venta</th>
                             <th scope="col">Fecha</th>
+                            <th scope="col">Total</th>
                             </tr>
                     </thead>
                     <tbody>
