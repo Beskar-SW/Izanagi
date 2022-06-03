@@ -153,7 +153,7 @@ export default function MenuUpdate() {
                       {/* <Link to={`/admin/menu/delete/${entrada.idProducto}`} className="btn btn-danger btn-sm">Delete</Link> */}
                       <button className="btn btn-danger btn-sm" onClick={() => {
                         if (window.confirm("Estas seguro de eliminar este producto?")) {
-                          fetch(`https://backizanagi.herokuapp.com/Admin/delete/${empanizado.idProducto}`, {
+                          fetch(`http://177.229.55.231:8080/Admin/delete/${empanizado.idProducto}`, {
                             method: "DELETE",
                           }).then(() => {
                             window.location.reload();
