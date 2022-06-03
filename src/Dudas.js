@@ -11,8 +11,8 @@ export default function Dudas() {
     e.preventDefault();
     emailjs
       .sendForm(
-        "prueba",
-        "template_grrq0nd",
+        "default_service",
+        "template_krx4xzi",
         dudasRef.current,
         "WEZC-gWIxtfP4RXwC"
       )
