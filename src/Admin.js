@@ -81,12 +81,12 @@ export default function Admin() {
     const DisplayVentas = (string) => {
         var json = JSON.parse(string);
         var arr = [];
-        var str = "\n";
+        // var str = "\n";
         for(var key in json){
             arr = json[key];
-            str += arr.join(" ");
+            // str += arr.join(" ");
         }
-        return str;
+        return arr.join("\n");
     }
 
     return (
@@ -139,6 +139,7 @@ export default function Admin() {
                                     <th scope="row">{index+1}</th>
                                     <td>{DisplayVentas(venta.data)}</td>
                                     <td>{new Date(venta.fecha).toUTCString()}</td>
+                                    <td>{venta.total}</td>
                                 </tr>
                             )
                         })}
