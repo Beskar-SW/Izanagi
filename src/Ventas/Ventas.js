@@ -97,7 +97,8 @@ export default function Ventas() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "data": test
+                "data": test,
+                "total": total
             })
         })
         .then(res => res.json())
