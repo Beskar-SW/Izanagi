@@ -12,9 +12,9 @@ export default function Dudas() {
     emailjs
       .sendForm(
         "default_service",
-        "IzanagiSushi",
+        "template_krx4xzi",
         dudasRef.current,
-        "WEZC-gWIxtfP4RXwC"
+        "Yw37P4-Ax2fCVMW1y"
       )
       .then(
         (result) => {
